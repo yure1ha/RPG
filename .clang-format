@@ -1,0 +1,11 @@
+BasedOnStyle: LLVM
+BreakBeforeBraces: Allman
+PointerAlignment: Left
+ReferenceAlignment: Left
+AllowShortIfStatementsOnASingleLine: Always
+AllowShortLoopsOnASingleLine: true
+AllowShortBlocksOnASingleLine: Always
+AllowShortFunctionsOnASingleLine: All
+AllowShortCaseLabelsOnASingleLine: true
+AllowShortLambdasOnASingleLine: All
+SpaceBeforeCpp11BracedList: true
