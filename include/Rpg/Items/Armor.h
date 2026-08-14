@@ -1,39 +1,30 @@
 #pragma once
 
-#include "Rpg/Items/Item.h"
+#include "Rpg/Components/IdComponent.h"
+#include "Rpg/Components/Attributes/DefenseComponent.h"
+#include "Rpg/Components/StatusModifierComponent.h"
 
-#include <memory>
-#include <string>
 
-namespace Rpg::Items
+namespace Rpg
 {
 
-enum class ArmorType
-{
-  head,
-  body,
-  hands,
-  legs,
-};
-
-struct ArmorStats
-{
-  ArmorType type {};
-
-  int defense {};
-};
-
-class Armor : public Item
+class Armor
 {
 public:
-  Armor(ItemAttributes attr, ArmorStats stats);
+  Armor(IdComponent id,
+        DefenseComponent defense,
+        StatusModifierComponent modifier)
+      : m_id {id},
+        m_defense {defense},
+        m_modifier {modifier} {}
 
-  [[nodiscard]] ArmorStats getStats() const { return stats; }
+  IdComponent id() const { return m_id; }
 
 private:
-  ArmorStats stats {};
+  IdComponent m_id;
+
+  DefenseComponent m_defense;
+  StatusModifierComponent m_modifier;
 };
 
-using ArmorUPtr = std::unique_ptr<Armor>;
-
-} // namespace Rpg::Items
+} // namespace Rpg
