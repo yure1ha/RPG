@@ -14,7 +14,8 @@ add_library(Rpg include/Rpg/Components/IdComponent.h
         include/Rpg/Components/ActiveModifiersComponent.h
         include/Rpg/Entities/Character.h
         src/Entities/Character.cpp
-        include/Rpg/Items/Consumable.h)
+        include/Rpg/Items/Consumable.h
+        include/Rpg/Items/Weapon.h)
 
 target_include_directories(Rpg PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 

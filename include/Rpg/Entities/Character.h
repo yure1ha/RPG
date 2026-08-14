@@ -8,6 +8,7 @@
 #include "Rpg/Components/ActiveModifiersComponent.h"
 
 #include "Rpg/Items/Consumable.h"
+#include "Rpg/Items/Weapon.h"
 
 #include "Rpg/Components/ContainerComponent.h"
 
@@ -23,13 +24,15 @@ public:
             StrengthComponent strength,
             DefenseComponent defense,
             ActiveModifiersComponent modifiers,
-            ContainerComponent<Consumable> consumables)
+            ContainerComponent<Consumable> consumables,
+            ContainerComponent<Weapon> weapons)
       : m_id {id},
         m_health {health},
         m_strength {strength},
         m_defense {defense},
         m_modifiers {modifiers},
-        m_consumables {consumables} {}
+        m_consumables {consumables},
+        m_weapons {weapons} {}
 
 private:
   IdComponent m_id;
@@ -41,6 +44,7 @@ private:
   ActiveModifiersComponent m_modifiers;
 
   ContainerComponent<Consumable> m_consumables;
+  ContainerComponent<Weapon> m_weapons;
 };
 
 } // namespace Rpg

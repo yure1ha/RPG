@@ -1,40 +1,29 @@
 #pragma once
 
-#include "Rpg/Items/Item.h"
+#include "Rpg/Components/IdComponent.h"
+#include "Rpg/Components/Attributes/StrengthComponent.h"
+#include "Rpg/Components/StatusModifierComponent.h"
 
-#include <memory>
-#include <string>
-
-namespace Rpg::Items
+namespace Rpg
 {
 
-enum class WeaponType
-{
-  melee,
-  ranged,
-};
-
-struct WeaponStats
-{
-  WeaponType type {};
-
-  int attack {};
-  int currentDurability {};
-  int maxDurability {};
-};
-
-class Weapon : public Item
+class Weapon
 {
 public:
-  Weapon(ItemAttributes attr, WeaponStats stats);
+  Weapon(IdComponent id,
+         StatusModifierComponent modifier,
+         StrengthComponent strength)
+      : m_id {id},
+        m_modifier {modifier},
+        m_strength {strength} {}
 
-  [[nodiscard]] WeaponStats getStats() const { return stats_; }
-  [[nodiscard]] bool isUsable() const { return stats_.currentDurability > 0; }
+  IdComponent id() const { return m_id; }
 
 private:
-  WeaponStats stats_ {};
+  IdComponent m_id;
+
+  StrengthComponent m_strength;
+  StatusModifierComponent m_modifier;
 };
 
-using WeaponUPtr = std::unique_ptr<Weapon>;
-
-} // namespace Rpg::Items
+} // namespace Rpg
