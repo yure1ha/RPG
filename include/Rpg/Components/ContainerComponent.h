@@ -20,12 +20,15 @@ public:
 
   void remove(const T& item)
   {
-    std::erase(m_items, item);
+    std::erase_if(m_items, [&item](const T& comp)
+    {
+      return item.id() == comp.id();
+    });
   }
 
   std::optional<IdComponent> get(const T& item)
   {
-    auto it {std::ranges::find(m_items, item)};
+    auto it {std::ranges::find(m_items, item, &T::id)};
 
     if (it != m_items.end()) return it->id();
 
